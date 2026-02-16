@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>table</title>
+
+    </head>
+    <body>
+        <table id="books" border="2px">
+            <thead>
+                <tr>
+                    <th onclick="sortdata('title')">Title</th>
+                    <th>isbn</th>
+                    <th>pagecount</th>
+                    <th>thumbnailurl</th>
+                    <th>status</th>
+                    <th>authors</th>
+                    <th>categories</th>
+                    <th>price</th>
+                    <th>currency</th>
+                    <th>discount</th>
+                    <th>discountunits</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+        <button onclick="loadmore()">load more</button>
+        <script src="data.js"></script>
+        <script>
+            var s=0
+            var l=10
+            function showbooks(){
+                document.getElementById("tbody").innerHTML=""
+                books.slice(s,s+l).forEach(function(book){
+                     var ntr=document.createElement("tr")
+                     var title=document.createElement("td")
+                     title.innerText= book.title
+                     var isbn=document.createElement("td")
+                     isbn.innerText= book.isbn
+                     var pagecount=document.createElement("td")
+                     pagecount.innerText= book.pageCount
+                     var thumbnailurl=document.createElement("td")
+                     thumbnailurl.innerText= book.thumbnailUrl
+                     var status=document.createElement("td")
+                     status.innerText= book.status
+                     var authors=document.createElement("td")
+                     authors.innerText= book.authors
+                     var categories=document.createElement("td")
+                     categories.innerText= book.categories
+                     var price=document.createElement("td")
+                     price.innerText= book.price
+                     var currency=document.createElement("td")
+                     currency.innerText= book.currency
+                     var discount=document.createElement("td")
+                     discount.innerText= book.discount
+                     var discountunits=document.createElement("td")
+                     discountunits.innerText= book.discountUnits
+                     ntr.appendChild(title)
+                     ntr.appendChild(isbn)
+                     ntr.appendChild(pagecount)
+                     ntr.appendChild(thumbnailurl)
+                     ntr.appendChild(status)
+                     ntr.appendChild(authors)
+                     ntr.appendChild(categories)
+                     ntr.appendChild(price)
+                    ntr.appendChild(currency)
+                    ntr.appendChild(discount)
+                    ntr.appendChild(discountunits)
+                    document.getElementById("tbody").appendChild(ntr)
+
+            })
+            function sortdata(column){
+                books.sort(function(a,b){
+                    if(a[column]>b[column])return 1
+                    if(a[column]>b[column])return -1
+                    return 0
+
+
+                })
+            }
+
+        
+    }
+    function loadmore(){
+    s=s+l
+    if(s>=books.length){
+        s=0
+    }
+    
+
+showbooks();
+
+}
+
+
+showbooks();
+
+           
+        </script>
+        
+    </body>
+    
+</html>
