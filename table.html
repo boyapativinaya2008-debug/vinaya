@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>table</title>
+
+    </head>
+    <body>
+        <table id="books" border="2px">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>isbn</th>
+                    <th>pagecount</th>
+                    <th>thumbnailurl</th>
+                    <th>status</th>
+                    <th>authors</th>
+                    <th>categories</th>
+                    <th>price</th>
+                    <th>currency</th>
+                    <th>discount</th>
+                    <th>discountunits</th>
+                </tr>
+            </thead>
+        </table>
+        <button onclick="loadmore()">load more</button>
+        <script src="data.js"></script>
+        <script>
+            var s=0
+            var l=10
+            function showbooks(){
+                for(var i=s;i==s+l;i++){
+                    if(books[i]==undefined) 
+                    break;
+            var ntr=document.createElement("tr")
+            var title=document.createElement("td")
+            title.innerText= book[i].title
+            var isbn=document.createElement("td")
+            isbn.innerText= book[i].isbn
+            var pagecount=document.createElement("td")
+            pagecount.innerText= book[i].pageCount
+            var thumbnailurl=document.createElement("td")
+            thumbnailurl.innerText= book[i].thumbnailUrl
+            var status=document.createElement("td")
+            status.innerText= book[i].status
+            var authors=document.createElement("td")
+            authors.innerText= book[i].authors
+            var categories=document.createElement("td")
+            categories.innerText= book[i].categories
+            var price=document.createElement("td")
+            price.innerText= book[i].price
+            var currency=document.createElement("td")
+            currency.innerText= book[i].currency
+            var discount=document.createElement("td")
+            discount.innerText= book[i].discount
+            var discountunits=document.createElement("td")
+            discountunits.innerText= book[i].discountUnits
+            ntr.appendChild(title)
+            ntr.appendChild(isbn)
+            ntr.appendChild(pagecount)
+            ntr.appendChild(thumbnailurl)
+            ntr.appendChild(status)
+            ntr.appendChild(authors)
+            ntr.appendChild(categories)
+            ntr.appendChild(price)
+            ntr.appendChild(currency)
+            ntr.appendChild(discount)
+            ntr.appendChild(discountunits)
+            document.getElementById("books").appendChild(ntr)
+
+
+        
+    }
+    s=s+l
+}
+function loadmore(){
+    showbooks();
+}
+           showbooks();
+        </script>
+        
+    </body>
+    
+</html>
